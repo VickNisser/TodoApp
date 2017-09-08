@@ -1,0 +1,48 @@
+// Variables
+@import "variables";
+
+.task_lists{ 
+    border: 8px double $burgundy;
+    border-radius: 5px;
+    background-color: $lightblue;
+    display: inline-flex;
+    justify-content: center;
+    flex-flow: column nowrap;
+    width: auto;
+    height: auto;
+    padding: $standardpadding;
+    margin: $standardmargin;
+    color: $burgundy;
+    text-transform: capitalize;
+    text-align: center;
+    align-items: center;
+    font-family: Verdana, Tahoma, sans-serif;
+    .task_display{
+        background-color: $purple;
+        border: 2px solid $blue;
+        padding: $standardpadding;
+        margin: $standardmargin;
+        text-decoration: none;
+    }
+    .task_list_headings{
+        font-style: italic;
+        color: $pink;
+        font-weight: bold;
+        border-bottom: 3px solid $pink;
+    }
+    
+    .control_buttons{
+        background-color: $burgundy;
+        color:$pink;
+        font-size: 15px;
+        border-radius: 22%;
+        border: 2px solid $lightblue;
+    }
+    
+    .task_input{
+        color: $burgundy;
+        border: 2px solid $blue;
+        border-radius: 2px;
+    }
+}
+
