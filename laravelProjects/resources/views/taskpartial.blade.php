@@ -1,6 +1,6 @@
 <section class="task_display">
     <div>{{ $task->name }}</div>
-    <div>Priority Level{{ $task->priority }}</div>
+    <div>Priority Level {{ $task->priority }}/5</div>
     <p>Options:</p>
     <section class="button_holder">
         <form action="/task/{{$task->id}}/{{$task->done}}" method="POST">
