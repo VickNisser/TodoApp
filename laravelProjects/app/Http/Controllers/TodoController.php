@@ -5,28 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Validator;
 use App\Task;
+use App\Http\Requests\CreateTaskValidation;
 
 class TodoController extends Controller
 {
     public function index() {
-        $tasks = Task::orderBy('created_at', 'asc')->get();
+        $tasks = Task::orderBy('priority', 'desc')->get();
     
         return view('welcome', [
             'tasks' => $tasks
         ]);
     }
 
-    public function create(Request $request) {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:55',
-        ]);
-    
-        if ($validator->fails()) {
-            return redirect('/')
-                ->withInput()
-                ->withErrors($validator);
-        }
-    
+    public function create(CreateTaskValidation $request) {
+        
         $task = new Task;
         $task->name = $request->name;
         $task->done = 0;
@@ -63,5 +55,20 @@ class TodoController extends Controller
         }
 
         return redirect('/');
+    }
+
+    public function priorityControl($id) {
+        $task = Task::find($id);
+        if($task->priority == 5){
+            $task->priority = $task->priority = 0;
+            $task->save();
+            return redirect('/');
+        }
+        else{
+            $task->priority = $task->priority + 1;
+            $task->save();
+            return redirect('/'); 
+        }
+        
     }
 }

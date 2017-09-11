@@ -10,13 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', 'TodoController@index');
+
+Route::put('/task/{id}/{done}', 'TodoController@update');
 
 Route::post('/task', 'TodoController@create');
 
-Route::delete('/task/{id}', 'TodoController@delete');
+Route::patch('/task/{id}/{priority}', 'TodoController@priorityControl');
 
-Route::put('/task/{id}/{done}', 'TodoController@update');
+Route::delete('/task/{id}', 'TodoController@delete');
 
 Route::delete('/', 'TodoController@deleteAllCompleted');
